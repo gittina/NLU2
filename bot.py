@@ -43,6 +43,8 @@ class RestaurantAPI(object):
             res = r_collection.find_one({"cuisine" : c_slot, "city" : l_slot, "price" : p_slot })
             if res is None:             
                 res = r_collection.find_one({"cuisine" : c_slot, "city" : l_slot})
+                if res is None:
+                    res = r_collection.find_one({"city" : l_slot})
         elif (c_slot is not None) & (l_slot is not None):
             res = r_collection.find_one({"cuisine" : c_slot, "city" : l_slot })
         elif (c_slot is not None) & (p_slot is not None):
@@ -56,15 +58,15 @@ class RestaurantAPI(object):
         if res is None:
             res = r_collection.find_one()
 
-        return res['name']+' in '+res['city']+' offering '+res['cuisine']
+        return res['name']+' in '+res['city']+' offering '+res['cuisine']+' cuisine'
 
 
 class ActionSearchRestaurants(FormAction):
     def name(self):
         return 'action_search_restaurants'
 
+    @staticmethod   
     def required_fields():
-        print("hello")
         return [
             EntityFormField("cuisine", "cuisine"),
             EntityFormField("location", "location"),
@@ -105,13 +107,13 @@ def train_dialogue(domain_file="restaurant_domain.yml",
                    model_path="models/dialogue",
                    training_data_file="data/babi_stories.md"):
     agent = Agent(domain_file,
-                  policies=[MemoizationPolicy(max_history=10),
+                  policies=[MemoizationPolicy(max_history=3),
                             RestaurantPolicy()])
 
     training_data = agent.load_data(training_data_file)
     agent.train(
             training_data,
-            epochs=300,
+            epochs=400,
             batch_size=200,
             validation_split=0.2
     )
