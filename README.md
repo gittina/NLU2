@@ -7,6 +7,7 @@ To run this bot you need to have Rasa NLU 0.12.3 and Rasa Core 0.9.3. Moreover, 
 ``` make create-database ```
 
 - Then, these are the steps necessary to train and run the bot:
+
 ``` make train-nlu ```
 
 ``` make train-dialogue ```
