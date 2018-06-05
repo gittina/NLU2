@@ -36,6 +36,8 @@ intents:
 templates:
   utter_greet:
     - "hey there!"
+    - "hello to you!"
+    - "hi!"
   utter_goodbye:
     - "goodbye :("
     - "Bye-bye"
@@ -52,6 +54,7 @@ templates:
           payload: "thank you"
   utter_ask_cuisine: 
     - "what kind of cuisine would you like?"
+    - "what kind of speciality would you prefer?"
   utter_ask_howcanhelp:
     - "how can I help you?"
   utter_ask_location:
@@ -69,6 +72,7 @@ templates:
         payload: "expensive"
   utter_on_it: 
     - "I'm on it"
+    - "I'm here for you :) "
 
 actions:
 - utter_greet

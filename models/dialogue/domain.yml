@@ -84,6 +84,7 @@ templates:
     text: ok making a reservation
   utter_ask_cuisine:
   - text: what kind of cuisine would you like?
+  - text: what kind of speciality would you prefer?
   utter_ask_howcanhelp:
   - text: how can I help you?
   utter_ask_location:
@@ -106,6 +107,9 @@ templates:
   - text: Bye-bye
   utter_greet:
   - text: hey there!
+  - text: hello to you!
+  - text: hi!
   utter_on_it:
   - text: I'm on it
+  - text: 'I''m here for you :) '
 topics: []
